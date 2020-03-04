@@ -2,8 +2,9 @@
 <h1>${albumReviews[0].title}</h1>
 
 ${albumReviews.map(review => {
+    const stars = "★".repeat(review.stars);
     return `<div class="albumBox">
-        <p>By: ${review.name}</p>
+        <p>By: ${review.name} ${stars}</p>
         <p>${review.review}</p>
     </div>`
 }).join('')}
