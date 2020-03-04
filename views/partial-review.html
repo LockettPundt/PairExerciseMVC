@@ -1,0 +1,29 @@
+
+<h1>${albumReviews[0].title}</h1>
+
+${albumReviews.map(review => {
+    return `<div class="albumBox">
+        <p>By: ${review.name}</p>
+        <p>${review.review}</p>
+    </div>`
+}).join('')}
+
+<form action="/" method="POST">
+    <input type="hidden" name="album_id" value="${albumReviews[0].id}">
+    
+    <label>Enter Name
+        <input type="text" name="user_name" placeholder="Enter Your Name"/>
+    </label>
+    <label>Title
+        <input type="text" name="review_title" placeholder="Enter a Title for review"/>
+    </label>
+    <label>Stars
+        <input type="text" name="stars" placeholder="Rate this Album"/>
+    </label>
+    <label>Enter Review
+        <textarea name="review_text" placeholder="Enter Your Review for ${albumReviews[0].title}"></textarea>
+    </label>
+    <button type="submit">Submit Review!</button>
+</form>
+
+<a href="/">HOME</a>
