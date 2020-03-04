@@ -1,0 +1,14 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.albumBox {
+  padding: 1vw;
+  background-color: silver;
+  margin: 1vw;
+}
+
+a {
+  color: aqua;
+}
