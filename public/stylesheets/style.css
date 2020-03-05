@@ -1,14 +1,60 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px;
+  font-family: Helvetica, Arial, sans-serif;
+  background-color: rgb(237, 237, 252);
+  
+
 }
 
 .albumBox {
   padding: 1vw;
-  background-color: silver;
+  background-color: rgb(155, 156, 202);
   margin: 1vw;
+  border-radius: 1vw;
 }
 
 a {
-  color: aqua;
+  color: rgb(20, 235, 181);
+  font-size: 1.5vw;
+  text-decoration: none;
+  margin: 1vh 1vw;
+}
+
+.pageTitle {
+  padding: 1vh 1vw;
+  font-size: 3rem;
+  color: rgb(20, 235, 181);
+}
+
+form {
+  display: flex;
+  background-color: rgb(155, 156, 202);
+  padding: 1vh;
+  margin: 1vh;
+  justify-content: space-around;
+  border-radius: 1vw;
+
+}
+
+input {
+  width: 10vw;
+}
+
+button {
+  width: 6vw;
+}
+.contentContainer {
+  width: 58%;
+  margin: 5vh auto;
+
+}
+p {
+  padding: 1vh;
+  margin: 1vh;
+  font-size: 1.3rem;
+}
+
+.stars {
+  color: rgb(20, 235, 181);
 }
