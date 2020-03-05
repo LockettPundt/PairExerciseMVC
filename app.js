@@ -6,6 +6,7 @@ const express = require('express'),
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const albumsRouter = require('./routes/albums');
 
 const app = express();
 
@@ -21,5 +22,6 @@ app.set('view engine', 'html');
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/albums', albumsRouter);
 
 module.exports = app;
