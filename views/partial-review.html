@@ -4,12 +4,12 @@
 ${albumReviews.map(review => {
     const stars = "★".repeat(review.stars);
     return `<div class="albumBox">
-        <p>By: ${review.name} ${stars}</p>
+        <p>By: ${review.name} <span class="stars">${stars}</span></p>
         <p>${review.review}</p>
     </div>`
 }).join('')}
 
-<form action="/" method="POST">
+<form action="/albums" method="POST">
     <input type="hidden" name="album_id" value="${albumReviews[0].id}">
     
     <label>Enter Name
@@ -27,5 +27,5 @@ ${albumReviews.map(review => {
     <button type="submit">Submit Review!</button>
 </form>
 
-<a href="/">HOME</a><br>
+<a href="/">HOME</a>
 <a href="/albums">BACK</a>
