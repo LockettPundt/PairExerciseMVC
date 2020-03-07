@@ -1,5 +1,6 @@
 const express = require('express'),
   bcrypt = require('bcryptjs'),
+  session = require('express-session'),
   albumsModel = require('../models/albumsModel'),
   userModel = require('../models/userModel'),
   router = express.Router();
@@ -14,7 +15,7 @@ router.get( '/', function(req, res, next) {
       partial: 'partial-users'
     }
   })
-  //res.send('respond with a resource');
+
 })
 
 router.get('/signup', async (req, res) => {
@@ -44,9 +45,17 @@ router.get('/login', async (req, res) => {
 router.post('/login', async (req, res) => {
   const {user_email_login, user_password_login} = req.body;
   const user = new userModel(null, null, user_email_login, user_password_login);
-  user.logInUser();
+  const response = await user.logInUser();
+  console.log('login response is: ', response);
+  if (!!response.isValid) {
+    req.session.is_logged_in = response.isValid;
+    req.session.id = response.id;
+    req.session.name = response.name;
+    res.redirect(200, '/');
+  } else {
+    res.redirect(403, '/users/login');
+  }
 
-  res.send(200);
 })
 
 router.post('/signup', async (req, res) => {
@@ -56,7 +65,8 @@ router.post('/signup', async (req, res) => {
   const hash = bcrypt.hashSync(user_password, salt);
   const user = new userModel(null, user_name, user_email, hash);
   user.addUser();
-  res.send(200).redirect('/');
+  res.sendStatus(200).redirect('/');
+
 })
 
 
