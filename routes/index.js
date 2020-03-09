@@ -9,6 +9,7 @@ router.get('/', async (req, res, next) => {
   res.render('template', { 
     locals: {
       title: 'Hi there. Welcome.',
+      session: req.session
     },
     partials: {
       partial: 'partial-index'
