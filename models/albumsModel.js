@@ -36,10 +36,11 @@ class AlbumsModel {
             return error;
         }
     }
-    static async createReview(album_id, review_title, review_text, stars) {
+    
+    static async createReview(album_id, user_id, stars, review_title, review_text) {
         try {
             const response = await db.one(`INSERT INTO reviews (albums_id, users_id, stars, title, review) VALUES ($1, $2, $3, $4, $5) RETURNING id`,
-            [album_id, 1, stars, review_title, review_text]);
+            [album_id, user_id, stars, review_title, review_text]);
             return response;
         } catch (error) {
             return error;
