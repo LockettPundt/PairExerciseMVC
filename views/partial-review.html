@@ -6,6 +6,7 @@ ${!!session.is_logged_in ? `
         const stars = "★".repeat(review.stars);
         return `<div class="albumBox">
             <p>By: ${review.name} <span class="stars">${stars}</span></p>
+            <p class="reviewTitle">${review.review_title}</p>
             <p>${review.review}</p>
         </div>`
     }).join('')}
