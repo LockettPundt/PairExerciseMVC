@@ -24,7 +24,8 @@ class AlbumsModel {
     static async getAllReviews(id) {
         try {
             const response = await db.any(`
-            SELECT *
+            SELECT *,
+            reviews.title AS review_title
             FROM reviews 
             JOIN users 
             ON users_id = users.id 
