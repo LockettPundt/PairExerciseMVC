@@ -12,6 +12,16 @@
 </head>
 
 <body>
+    <nav class='navBar'>
+        ${!!session.is_logged_in ? `
+            <a>Hi, ${session.name}</a>
+            <a href='/users/logout'>Log Out</a>
+        ` : `<a href="/users/login">Log In</a>
+            <a href="/users/signup">Sign Up</a>` }
+        <a href="/">Home</a>
+        <a href="javascript:history.back()">Back</a>
+        
+    </nav>
     <section class="contentContainer">
         <h1 class="pageTitle">${title}</h1>
         ${partial}

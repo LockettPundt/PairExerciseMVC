@@ -1,10 +1,12 @@
-<p>Are you registered? <a href="/users/login">Sign in</a></p>
-<p>If not? <a href="users/signup">Register Here.</a></p>
-${allAlbums.map(album => {
-return `<div class="albumBox">
-    <a href="/albums/${album.id}">${album.title}</a>
-    <p>By: ${album.artist}</p>
-    <p>${album.genre}</p>
-    <p>Year: ${album.year}</p>
-</div>`
-}).join('')}
+
+${!!session.is_logged_in ? `
+    ${allAlbums.map(album => {
+    return `<div class="albumBox">
+        <a href="/albums/${album.id}">${album.title}</a>
+        <p>By: ${album.artist}</p>
+        <p>${album.genre}</p>
+        <p>Year: ${album.year}</p>
+    </div>`
+    }).join('')}
+    ` : `<a href="/users/login">Please Log In</a>`
+}
