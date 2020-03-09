@@ -23,7 +23,7 @@ app.set('views', './views');
 app.set('view engine', 'html');
 app.use(session( {
     store: new FileStore(),
-    secret: 'secret',
+    secret: 'not so secret',
     resave: false,
     saveUninitialized: true,
     is_logged_in: false
