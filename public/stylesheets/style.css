@@ -54,6 +54,13 @@ button {
   margin: 5vh auto 100vh;
 
 }
+
+.navBar {
+  display: flex;
+  width: 58%;
+  margin: auto;
+}
+
 p {
   padding: 1vh;
   margin: 1vh;
