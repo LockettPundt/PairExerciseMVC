@@ -9,7 +9,8 @@ const express = require('express'),
 router.get( '/', function(req, res, next) {
   res.render('template', {
     locals: {
-      title: 'users'
+      title: 'users',
+      session: req.session
     },
     partials: {
       partial: 'partial-users'
@@ -22,7 +23,8 @@ router.get('/signup', async (req, res) => {
 
   res.render('template', {
     locals: {
-      title: 'Sign Up'
+      title: 'Sign Up',
+      session: req.session
     },
     partials: {
       partial: 'partial-signup'
@@ -34,12 +36,29 @@ router.get('/login', async (req, res) => {
 
   res.render('template', {
     locals: {
-      title: 'Log in'
+      title: 'Log in',
+      session: req.session
     },
     partials: {
       partial: 'partial-login'
     }
   })
+})
+
+router.get('/logout', async (req, res) => {
+
+  
+
+  res.render('template', {
+    locals: {
+      title: `GoodBye ${req.session.name}` ,
+      session: req.session
+    },
+    partials: {
+      partial: 'partial-logout'
+    }
+  })
+  req.session.destroy();
 })
 
 router.post('/login', async (req, res) => {
@@ -48,8 +67,8 @@ router.post('/login', async (req, res) => {
   const response = await user.logInUser();
   console.log('login response is: ', response);
   if (!!response.isValid) {
+    req.session.user_id = response.id;
     req.session.is_logged_in = response.isValid;
-    req.session.id = response.id;
     req.session.name = response.name;
     res.redirect(200, '/');
   } else {
